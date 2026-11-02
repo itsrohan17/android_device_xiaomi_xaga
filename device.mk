@@ -9,7 +9,13 @@ $(call inherit-product, device/xiaomi/mt6895-common/mt6895.mk)
 
 # Call the MiuiCamera setup
 $(call inherit-product-if-exists, vendor/xiaomi/miuicamera-xaga/device.mk)
-
+# surfacefinger
+$(call soong_config_set,surfaceflinger,frame_rate_category_high,144)
+$(call soong_config_set,surfaceflinger,frame_rate_category_min,60)
+# viper4android
+$(call inherit-product, packages/apps/ViPER4AndroidFX/config.mk)
+#dolby
+$(call inherit-product, hardware/dolby/dolby.mk)
 # Fastboot package
 PRODUCT_BUILD_SUPER_PARTITION := true
 PRODUCT_FASTBOOT_TEMPLATE_ZIP := $(LOCAL_PATH)/prebuilts/fastboot.zip
